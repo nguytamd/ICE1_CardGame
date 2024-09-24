@@ -28,6 +28,7 @@ public class CardTrick {
             c.setValue(random.nextInt(13) + 1);
             c.setSuit(Card.SUITS[random.nextInt(Card.SUITS.length)]);
             magicHand[i] = c;
+            System.out.println(c.getSuit() + " " + c.getValue());
         }
         
         //insert code to ask the user for Card value and suit, create their card
@@ -35,14 +36,15 @@ public class CardTrick {
         //Then report the result here
         // add one luckcard hard code 2,clubs
         
-        System.out.println("Enter a card value from 1 to 13 (1 - Ace, 11 - Jack, 12 - Queen, 13 - King): ");
+        System.out.println("Enter a card value from 1 - 13 (1 - Ace, 11 - Jack, 12 - Queen, 13 - King): ");
         int userValue = scanner.nextInt();
-        System.out.println("Enter a suit (Spades, Clubs, Diamonds, Hearts): ");
-        String userSuit = scanner.next();
+        System.out.println("Enter a suit from 0 - 3 (0 - Hearts, 1 - Diamonds, 2 - Clubs, 3 - Spades): ");
+        int userSuit = scanner.nextInt();
+        scanner.nextLine();
         
         Card userCard = new Card();
         userCard.setValue(userValue);
-        userCard.setSuit(userSuit);
+        userCard.setSuit(Card.SUITS[userSuit]);
         
         
         boolean found = false;
@@ -55,9 +57,9 @@ public class CardTrick {
         }
         
         if (found) {
-            System.out.println("Your card was found in the magic hand!");
+            System.out.println("Nice! Your card is in the magic hand!");
         } else {
-            System.out.println("Your card was not found in the magic hand.");
+            System.out.println("Sorry, your card is not found in the magic hand.");
         }
         
         Card luckyCard = new Card();
